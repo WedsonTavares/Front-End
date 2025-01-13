@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 20px
+}
+
+#resultados {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#resultados h2 {
+    color: #333;
+}
+
+#soma {
+    color: #4CAF50;  
+}
+
+#fibonacci {
+    color: #4CAF50;   
+}
+
+#faturamento {
+    color: #4CAF50;
+}
+
+#percentual {
+    color: #4CAF50;
+}
+
+#inversao {
+    color: #4CAF50;
+}

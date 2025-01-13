@@ -1,0 +1,122 @@
+Comparativo: JavaScript vs TypeScript
+Código em JavaScript
+O código JavaScript realiza várias operações, incluindo cálculos de soma, verificação de sequência de Fibonacci, processamento de dados de faturamento diário, cálculo de percentuais de faturamento por estado e inversão de strings. Ele utiliza funções de array como filter, map, reduce, e Math.min/Math.max para processar os dados, além de manipular o DOM para exibir os resultados.
+
+Conversão para TypeScript
+Para converter esse código para TypeScript, precisamos adicionar tipos explícitos para variáveis e funções. Isso ajuda a garantir a segurança de tipos e facilita a detecção de erros durante o desenvolvimento.
+
+Tipos de Dados:
+Em TypeScript, podemos definir interfaces para descrever a estrutura dos objetos. Por exemplo, podemos criar uma interface Faturamento para representar os dados de faturamento diário.
+Anotações de Tipo:
+
+Adicionamos anotações de tipo para variáveis e parâmetros de funções. Isso inclui especificar que faturamentos é um array de números (number[]), e que total é um número (number).
+
+Manipulação do DOM:
+
+Quando acessamos elementos do DOM, usamos o operador de asserção não nula (!) para informar ao TypeScript que o elemento não será null.
+Exemplo de Conversão
+
+JavaScript:(Localizado no script.js)
+
+TypeScript: 
+
+// 1. Valor da variável SOMA
+let INDICE: number = 13;
+let SOMA: number = 0;
+let K: number = 0;
+
+while (K < INDICE) {
+    K = K + 1;
+    SOMA = SOMA + K;
+}
+
+document.getElementById('soma')!.innerText = `Valor da variável SOMA: ${SOMA}`;
+
+// 2. Sequência de Fibonacci
+function isFibonacci(n: number): boolean {
+    let a: number = 0;
+    let b: number = 1;
+    while (a < n) {
+        [a, b] = [b, a + b];
+    }
+    return a === n;
+}
+
+let numero: number = 21;
+let fibonacciMsg: string = isFibonacci(numero) ? 
+    `O número ${numero} pertence à sequência de Fibonacci.` : 
+    `O número ${numero} não pertence à sequência de Fibonacci.`;
+
+document.getElementById('fibonacci')!.innerText = fibonacciMsg;
+
+// 3. Faturamento diário
+interface Faturamento {
+    dia: number;
+    valor: number;
+}
+
+const dados: Faturamento[] = [
+    { dia: 1, valor: 100 },
+    { dia: 2, valor: 200 },
+    { dia: 3, valor: 0 },
+    { dia: 4, valor: 300 },
+    { dia: 5, valor: 0 },
+    { dia: 6, valor: 400 },
+    { dia: 7, valor: 500 }
+];
+
+const faturamentos: number[] = dados.filter(dia => dia.valor > 0).map(dia => dia.valor);
+
+const menorFaturamento: number = Math.min(...faturamentos);
+const maiorFaturamento: number = Math.max(...faturamentos);
+const mediaMensal: number = faturamentos.reduce((acc, val) => acc + val, 0) / faturamentos.length;
+const diasAcimaDaMedia: number = faturamentos.filter(valor => valor > mediaMensal).length;
+
+document.getElementById('faturamento')!.innerText = 
+    `Menor faturamento: ${menorFaturamento}\n` +
+    `Maior faturamento: ${maiorFaturamento}\n` +
+    `Dias com faturamento acima da média: ${diasAcimaDaMedia}`;
+
+// 4. Percentual de faturamento por estado
+const faturamento: { [key: string]: number } = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+};
+
+const total: number = Object.values(faturamento).reduce((acc, val) => acc + val, 0);
+
+const percentuais: { [key: string]: number } = {};
+for (const estado in faturamento) {
+    percentuais[estado] = (faturamento[estado] / total) * 100;
+}
+
+let percentMsg: string = '';
+for (const estado in percentuais) {
+    percentMsg += `${estado}: ${percentuais[estado].toFixed(2)}%\n`;
+}
+
+document.getElementById('percent')!.innerText = percentMsg;
+
+// 5. Inverter string
+function inverterString(s: string): string {
+    let invertida: string = "";
+    for (let char of s) {
+        invertida = char + invertida;
+    }
+    return invertida;
+}
+
+let string: string = "exemplo";
+document.getElementById('inversao')!.innerText = `String invertida: ${inverterString(string)}`;
+
+
+Conclusão:
+A principal diferença entre JavaScript e TypeScript é a adição de tipos estáticos. 
+Isso torna o código mais robusto e menos propenso a erros. 
+Além disso, TypeScript oferece melhores ferramentas de desenvolvimento, 
+como autocompletar e verificação de tipos, que podem aumentar a produtividade e a qualidade do código.
+
+(Obersevação: fiz o código usando js puro porque seria preciso instalar as libs dp typescript.)
