@@ -28,7 +28,7 @@ Este projeto é uma página web simples que exibe os resultados de alguns cálcu
 ## Como Executar
 
 1. Clone o repositório ou baixe os arquivos.
-2. Certifique-se de que a estrutura de arquivos esteja assim:
+2. Certifique-se de que a estrutura de arquivos esteja mais ou menos assim:
 
     ```
     /c:/Users/wedso/OneDrive/Área de Trabalho/Front-End/
@@ -49,6 +49,3 @@ Ao abrir a página `index.html` no navegador, você verá os resultados dos cál
 - **Percentual de faturamento por estado**: Exibe o percentual de representação de cada estado.
 - **Inverter string**: Exibe a string "exemplo" invertida.
 
-## Contato
-
-Para mais informações, entre em contato com [seu email].
